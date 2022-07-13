@@ -17,6 +17,7 @@
 		7E516C90287DED8C0010E67F /* P_HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C8F287DED8C0010E67F /* P_HTTPMethod.swift */; };
 		7E516C92287EB36A0010E67F /* P_TwoColumnGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C91287EB36A0010E67F /* P_TwoColumnGrid.swift */; };
 		7E516C94287EB7FE0010E67F /* P_CustomCellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C93287EB7FE0010E67F /* P_CustomCellListView.swift */; };
+		7E516C96287EBCB70010E67F /* P_multipartformdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C95287EBCB70010E67F /* P_multipartformdata.swift */; };
 		7EA083A4287C049D00BB1740 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA083A3287C049D00BB1740 /* Product.swift */; };
 		7EA083AA287D15BC00BB1740 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA083A9287D15BC00BB1740 /* Protocol.swift */; };
 		7EA083AC287D190400BB1740 /* URLSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA083AB287D190400BB1740 /* URLSessionProvider.swift */; };
@@ -59,6 +60,7 @@
 		7E516C8F287DED8C0010E67F /* P_HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_HTTPMethod.swift; sourceTree = "<group>"; };
 		7E516C91287EB36A0010E67F /* P_TwoColumnGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_TwoColumnGrid.swift; sourceTree = "<group>"; };
 		7E516C93287EB7FE0010E67F /* P_CustomCellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_CustomCellListView.swift; sourceTree = "<group>"; };
+		7E516C95287EBCB70010E67F /* P_multipartformdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_multipartformdata.swift; sourceTree = "<group>"; };
 		7EA083A3287C049D00BB1740 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		7EA083A9287D15BC00BB1740 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		7EA083AB287D190400BB1740 /* URLSessionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProvider.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				7E516C8F287DED8C0010E67F /* P_HTTPMethod.swift */,
 				7E516C91287EB36A0010E67F /* P_TwoColumnGrid.swift */,
 				7E516C93287EB7FE0010E67F /* P_CustomCellListView.swift */,
+				7E516C95287EBCB70010E67F /* P_multipartformdata.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				C70FB0FF25BEF61C00C9924E /* ViewController.swift in Sources */,
 				7E516C90287DED8C0010E67F /* P_HTTPMethod.swift in Sources */,
 				20AAF95D287C0D2600E48A96 /* Currency.swift in Sources */,
+				7E516C96287EBCB70010E67F /* P_multipartformdata.swift in Sources */,
 				7EA083AA287D15BC00BB1740 /* Protocol.swift in Sources */,
 				20AAF95F287C0DD500E48A96 /* Page.swift in Sources */,
 				7E516C92287EB36A0010E67F /* P_TwoColumnGrid.swift in Sources */,
@@ -582,7 +586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OpenMarket/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -601,7 +605,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OpenMarket/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
