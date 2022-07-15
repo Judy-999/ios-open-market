@@ -25,7 +25,7 @@
 
 | **재재(ZZBAE)** | **주디(Judy)** |
 |:---:|:---:|
-|![](https://i.imgur.com/Xa9oBRA.png)|<img src="https://i.imgur.com/n304TQO.jpg" width="460" height="460" />|
+|![](https://i.imgur.com/Xa9oBRA.png)|<img src="https://i.imgur.com/n304TQO.jpg" width="400" height="400" />|
 |[Github](https://github.com/ZZBAE)|[Github](https://github.com/Judy-999)|
 
 <br>
