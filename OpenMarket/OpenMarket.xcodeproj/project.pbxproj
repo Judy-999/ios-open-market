@@ -18,6 +18,9 @@
 		7E516C92287EB36A0010E67F /* P_TwoColumnGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C91287EB36A0010E67F /* P_TwoColumnGrid.swift */; };
 		7E516C94287EB7FE0010E67F /* P_CustomCellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C93287EB7FE0010E67F /* P_CustomCellListView.swift */; };
 		7E516C96287EBCB70010E67F /* P_multipartformdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516C95287EBCB70010E67F /* P_multipartformdata.swift */; };
+		7E516D36288327B60010E67F /* MarketViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516D35288327B60010E67F /* MarketViewControllerLayout.swift */; };
+		7E516D38288327C30010E67F /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516D37288327C30010E67F /* MarketViewController.swift */; };
+		7E516D3A2883280A0010E67F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E516D392883280A0010E67F /* Item.swift */; };
 		7EA083A4287C049D00BB1740 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA083A3287C049D00BB1740 /* Product.swift */; };
 		7EA083AA287D15BC00BB1740 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA083A9287D15BC00BB1740 /* Protocol.swift */; };
 		7EA083AC287D190400BB1740 /* URLSessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA083AB287D190400BB1740 /* URLSessionProvider.swift */; };
@@ -61,6 +64,9 @@
 		7E516C91287EB36A0010E67F /* P_TwoColumnGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_TwoColumnGrid.swift; sourceTree = "<group>"; };
 		7E516C93287EB7FE0010E67F /* P_CustomCellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_CustomCellListView.swift; sourceTree = "<group>"; };
 		7E516C95287EBCB70010E67F /* P_multipartformdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P_multipartformdata.swift; sourceTree = "<group>"; };
+		7E516D35288327B60010E67F /* MarketViewControllerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewControllerLayout.swift; sourceTree = "<group>"; };
+		7E516D37288327C30010E67F /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		7E516D392883280A0010E67F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7EA083A3287C049D00BB1740 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		7EA083A9287D15BC00BB1740 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		7EA083AB287D190400BB1740 /* URLSessionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProvider.swift; sourceTree = "<group>"; };
@@ -142,11 +148,14 @@
 				20AAF95C287C0D2600E48A96 /* Currency.swift */,
 				7EA083A3287C049D00BB1740 /* Product.swift */,
 				20AAF95E287C0DD500E48A96 /* Page.swift */,
+				7E516D392883280A0010E67F /* Item.swift */,
 				7EA083A9287D15BC00BB1740 /* Protocol.swift */,
 				7E516C8B287D9EC60010E67F /* Extension.swift */,
 				7EA083AD287D41AE00BB1740 /* MockURLSession.swift */,
 				7EA083AB287D190400BB1740 /* URLSessionProvider.swift */,
 				7E516C8D287DEB8F0010E67F /* P_segmentedControl.swift */,
+				7E516D37288327C30010E67F /* MarketViewController.swift */,
+				7E516D35288327B60010E67F /* MarketViewControllerLayout.swift */,
 				7E516C8F287DED8C0010E67F /* P_HTTPMethod.swift */,
 				7E516C91287EB36A0010E67F /* P_TwoColumnGrid.swift */,
 				7E516C93287EB7FE0010E67F /* P_CustomCellListView.swift */,
@@ -335,6 +344,7 @@
 			files = (
 				C70FB0FF25BEF61C00C9924E /* ViewController.swift in Sources */,
 				7E516C90287DED8C0010E67F /* P_HTTPMethod.swift in Sources */,
+				7E516D36288327B60010E67F /* MarketViewControllerLayout.swift in Sources */,
 				20AAF95D287C0D2600E48A96 /* Currency.swift in Sources */,
 				7E516C96287EBCB70010E67F /* P_multipartformdata.swift in Sources */,
 				7EA083AA287D15BC00BB1740 /* Protocol.swift in Sources */,
@@ -342,9 +352,11 @@
 				7E516C92287EB36A0010E67F /* P_TwoColumnGrid.swift in Sources */,
 				7E516C8C287D9EC60010E67F /* Extension.swift in Sources */,
 				7EA083A4287C049D00BB1740 /* Product.swift in Sources */,
+				7E516D38288327C30010E67F /* MarketViewController.swift in Sources */,
 				7EA083AC287D190400BB1740 /* URLSessionProvider.swift in Sources */,
 				205D32CB287D6491004CF76F /* ProductDecoder.swift in Sources */,
 				7E516C8E287DEB8F0010E67F /* P_segmentedControl.swift in Sources */,
+				7E516D3A2883280A0010E67F /* Item.swift in Sources */,
 				7EA083AE287D41AE00BB1740 /* MockURLSession.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				7E516C94287EB7FE0010E67F /* P_CustomCellListView.swift in Sources */,
