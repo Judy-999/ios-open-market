@@ -14,3 +14,13 @@ protocol URLSessionProtocol {
 protocol URLSessionDataTaskProtocol {
     func resume()
 }
+
+protocol APIRequest {
+    
+    var httpBody: [String: String]? { get }
+    
+}
+
+struct ReceivePageRequest: APIRequest {
+    
+}

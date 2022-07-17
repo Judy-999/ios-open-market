@@ -12,7 +12,7 @@ enum DataTaskError: Error {
     case invalidDataError
 }
 
-class URLSessionProvider {
+class URLSessionManager {
     private let session: URLSessionProtocol
     private let baseURL = "https://market-training.yagom-academy.kr/"
     

@@ -10,11 +10,11 @@ import XCTest
 @testable import OpenMarket
 
 class URLSessionTests: XCTestCase {
-    var sut: URLSessionProvider!
+    var sut: URLSessionManager!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = URLSessionProvider(session: URLSession.shared)
+        sut = URLSessionManager(session: URLSession.shared)
     }
     
     override func tearDownWithError() throws {
