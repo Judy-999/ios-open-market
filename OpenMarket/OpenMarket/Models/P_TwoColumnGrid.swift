@@ -26,7 +26,8 @@
 //}
 //
 //extension TwoColumnViewController {
-//    /// - Tag: TwoColumn
+//    /// - MARK : TwoColumn
+//
 //    func createLayout() -> UICollectionViewLayout {
 //        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
 //                                             heightDimension: .fractionalHeight(1.0))
@@ -64,7 +65,7 @@
 //            cell.label.textAlignment = .center
 //            cell.label.font = UIFont.preferredFont(forTextStyle: .title1)
 //        }
-//        
+//
 //        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView) {
 //            (collectionView: UICollectionView, indexPath: IndexPath, identifier: Int) -> UICollectionViewCell? in
 //            // Return the cell.
