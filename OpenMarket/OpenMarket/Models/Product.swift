@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 struct Product: Codable {
     let id: Int
-    let vendorId: Int
+    let vendorId: Double
     let name: String
     let thumbnail: String
     let currency: Currency
-    let price: Int
-    let bargainPrice: Int
-    let discountedPrice: Int
+    let price: Double
+    let bargainPrice: Double
+    let discountedPrice: Double
     let stock: Int
     let createdAt: String
     let issuedAt: String
@@ -32,5 +33,19 @@ struct Product: Codable {
         case stock
         case createdAt = "created_at"
         case issuedAt = "issued_at"
+    }
+}
+
+extension Product {
+    
+    func toItem() -> Item? {
+        let price = self.price.description
+        let productName = self.name
+        let barginPrice = self.price.description
+        guard let url = URL(string: thumbnail) else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        guard let image = UIImage(data: data) else { return nil }
+        let stock1 = self.stock.description
+        return Item(productImage: image, productName: productName, price: price, bargainPrice: barginPrice, stock: stock1)
     }
 }
