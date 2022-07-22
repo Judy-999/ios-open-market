@@ -271,7 +271,7 @@ Grid 셀과 List 셀 모두 콘텐츠에 대한 제약을 `self`와 관련하여
 <br>
 
 ## 🔗 참고 링크
-**[Step 1]**
+**[Step 1]**<br>
 [wody's tistory](https://wody.tistory.com/10)<br>[wody's notion](https://wodylikeios.notion.site/URLSession-Unit-Test-7a57917280b84a92b5a644adfac6246c)<br>[Fetching Website Data into Memory](https://developer.apple.com/documentation/foundation/url_loading_system/fetching_website_data_into_memory)<br>[Implementing Modern Collection Views](https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views)<br>[raywendelich test project](https://www.raywenderlich.com/16906182-ios-14-tutorial-uicollectionview-list#toc-anchor-003)<br>[URLSession](https://developer.apple.com/documentation/foundation/urlsession)<br>[오동나무의 비동기 테스트](https://yagom.net/courses/unit-test-%ec%9e%91%ec%84%b1%ed%95%98%ea%b8%b0/lessons/%eb%b9%84%eb%8f%99%ea%b8%b0-%eb%a9%94%ec%84%9c%eb%93%9c-%ed%85%8c%ec%8a%a4%ed%8a%b8%ed%95%98%ea%b8%b0/topic/completionhandler-%ed%85%8c%ec%8a%a4%ed%8a%b8%ed%95%98%ea%b8%b0/)<br>
-**[Step 2]**
+**[Step 2]**<br>
 [contentView](https://developer.apple.com/documentation/uikit/uitableviewcell/1623229-contentview)<br>[wody - UILabel에 취소선 (strikethroughStyle) 적용하기](https://wody.tistory.com/18)<br>[UICollectionViewCompositionalLayout](https://ios-development.tistory.com/945)<br>[Lists in UICollectionView](https://developer.apple.com/videos/play/wwdc2020/10026)<br>[UIActivityIndicatorView](https://ios-development.tistory.com/682)<br>[modernCellConfiguration](https://developer.apple.com/videos/play/wwdc2020/10027/)<br>[UICollectionViewDataSource](https://developer.apple.com/documentation/uikit/uicollectionviewdatasource)<br>[implementing Modern CollectionView](https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views)<br>
