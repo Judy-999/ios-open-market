@@ -13,6 +13,7 @@ final class AddProductViewCell: UICollectionViewCell {
     let productImageButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemGray5
 //        button.isEnabled = false
         return button
     }()

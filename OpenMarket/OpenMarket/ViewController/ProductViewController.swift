@@ -9,7 +9,7 @@ import UIKit
 
 class ProductViewController: UIViewController {
     private let productView = AddProductView()
-    private lazy var dataSource = [UIImage.add, UIImage(named: "dog"), UIImage(named: "dog"), UIImage(named: "dog"), UIImage(named: "dog")] //getSampleImages()
+    private lazy var dataSource = [UIImage(named: "dog"), UIImage(named: "dog"), UIImage(named: "dog"), UIImage(named: "dog"), UIImage(systemName: "plus")] //getSampleImages()
 
     override func loadView() {
         super.loadView()
@@ -17,13 +17,23 @@ class ProductViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        let cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(goBack))
+        let doneBarButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(goBackWithUpdate))
         super.viewDidLoad()
+        navigationItem.title = "상품등록"
+        navigationItem.leftBarButtonItem = cancelBarButton
+        navigationItem.rightBarButtonItem = doneBarButton
+        navigationItem.setHidesBackButton(true, animated: false)
         productView.collectionView.dataSource = self
     }
     
-//    func getSampleImages() -> [UIImage?] {
-//        (1...5).map { _ in return UIImage(named: "dog") }
-//    }
+    @objc private func goBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    @objc private func goBackWithUpdate() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension ProductViewController: UICollectionViewDataSource {

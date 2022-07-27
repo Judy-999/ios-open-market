@@ -35,7 +35,7 @@ final class MarketCollectionViewController: UICollectionViewController {
         return segmentedControl
     }()
     
-    private let barbutton: UIBarButtonItem = {
+    private let addProductButton: UIBarButtonItem = {
         let addButton = UIBarButtonItem()
         addButton.image = UIImage(systemName: "plus")
         return addButton
@@ -95,12 +95,14 @@ final class MarketCollectionViewController: UICollectionViewController {
     
     private func configureUI() {
         navigationItem.titleView = segmentedControl
-        navigationItem.rightBarButtonItem = barbutton
+        navigationItem.rightBarButtonItem = addProductButton
         collectionView.collectionViewLayout = createListLayout()
     }
     
     private func addAction() {
         segmentedControl.addTarget(self, action: #selector(indexChanged), for: .valueChanged)
+        addProductButton.target = self
+        addProductButton.action = #selector(addNewProduct)
     }
     
     @objc private func indexChanged(segmentedControl: UISegmentedControl) {
@@ -113,6 +115,11 @@ final class MarketCollectionViewController: UICollectionViewController {
             dataSource = makeGridDataSource()
             receivePageData()
         }
+    }
+
+    @objc private func addNewProduct(addProductButton: UIBarButtonItem) {
+        guard let productVC = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") else { return }
+        self.navigationController?.pushViewController(productVC, animated: true)
     }
     
     // MARK: DataSource
