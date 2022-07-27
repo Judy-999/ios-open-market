@@ -92,8 +92,8 @@ final class AddProductView: UIView {
     private let infoStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.distribution = .fill
+        stackView.spacing = 8
+        stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -101,7 +101,7 @@ final class AddProductView: UIView {
     private let entireStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 2
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -130,9 +130,9 @@ final class AddProductView: UIView {
             entireStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
             entireStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
             
-            collectionView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.2)
-//            segmentedControl.widthAnchor.constraint(equalTo: priceTextfield.widthAnchor, constant: 0.3),
-//            descriptionTextView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, constant: 0.6)
+            collectionView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.2),
+            segmentedControl.widthAnchor.constraint(equalTo: priceTextfield.widthAnchor, multiplier: 0.4),
+            descriptionTextView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.55)
         ])
     }
     
