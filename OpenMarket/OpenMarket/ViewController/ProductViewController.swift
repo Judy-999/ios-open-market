@@ -56,7 +56,7 @@ extension ProductViewController: UICollectionViewDataSource {
   }
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddProductViewCell.id, for: indexPath) as! AddProductViewCell
-      cell.button.imageView?.image = UIImage.add //self.dataSource[indexPath.item]
+      cell.button.setImage(self.dataSource[indexPath.item], for: .normal)
     return cell
   }
 }
