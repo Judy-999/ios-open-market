@@ -1,44 +1,43 @@
 //
-//  MyCell.swift
-//  ExHorizontalScrollView
+//  AddProductViewCell.swift
+//  OpenMarket
 //
-//  Created by Jake.K on 2022/05/16.
+//  Created by 주디, 재재 on 2022/07/27.
 //
 
 import UIKit
 
 final class AddProductViewCell: UICollectionViewCell {
-  static let id = "MyCell"
-  
-  // MARK: UI
-    let button: UIButton = {
-        let view = UIButton()
-        view.backgroundColor = .systemRed
-        view.contentMode = .scaleAspectFill
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    static let id = "ProductCell"
+    
+    let productImageButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.isEnabled = false
+        return button
     }()
     
-  // MARK: Initializer
-  required init?(coder: NSCoder) {
-      super.init(coder: coder)
-  }
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+    private func arrangeSubView() {
+        self.contentView.addSubview(productImageButton)
+        
+        NSLayoutConstraint.activate([
+            productImageButton.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+            productImageButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+            productImageButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            productImageButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+        ])
+    }
     
-    self.contentView.addSubview(self.button)
-    NSLayoutConstraint.activate([
-      self.button.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-      self.button.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-      self.button.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-      self.button.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-    ])
-  }
-  
-  override func prepareForReuse() {
-    super.prepareForReuse()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
-//    self.button.imageView?.image = nil
-  }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        arrangeSubView()
+    }
+    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//    }
 }

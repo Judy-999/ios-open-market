@@ -8,43 +8,137 @@
 import UIKit
 
 final class AddProductView: UIView {
-    
     private let flowLayout: UICollectionViewFlowLayout = {
-      let layout = UICollectionViewFlowLayout()
-      layout.scrollDirection = .horizontal
-      layout.minimumInteritemSpacing = 8.0
-      layout.itemSize = CGSize(width: 100, height: 100)
-      return layout
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 5.0
+        layout.itemSize = CGSize(width: 120, height: 120)
+        return layout
     }()
     
     lazy var collectionView: UICollectionView = {
-      let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
-      view.isScrollEnabled = true
-      view.showsHorizontalScrollIndicator = false
-      view.showsVerticalScrollIndicator = true
-      view.contentInset = .zero
-      view.backgroundColor = .clear
-      view.clipsToBounds = true
-      view.register(AddProductViewCell.self, forCellWithReuseIdentifier: "MyCell")
-      view.translatesAutoresizingMaskIntoConstraints = false
-      return view
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+//        view.contentInset = .zero
+//        view.clipsToBounds = true
+        view.register(AddProductViewCell.self, forCellWithReuseIdentifier: AddProductViewCell.id)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
-    func aa() {
+    private let productNameTextfield: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "상품명"
+        textField.font = .preferredFont(forTextStyle: .caption1)
+        textField.adjustsFontForContentSizeCategory = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let priceTextfield: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "상품가격"
+        textField.font = .preferredFont(forTextStyle: .caption1)
+        textField.adjustsFontForContentSizeCategory = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private let bargainPriceTextfield: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "할인금액"
+        textField.font = .preferredFont(forTextStyle: .caption1)
+        textField.adjustsFontForContentSizeCategory = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private let stockTextfield: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
+        textField.placeholder = "재고수량"
+        textField.font = .preferredFont(forTextStyle: .caption1)
+        textField.adjustsFontForContentSizeCategory = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private let segmentedControl: UISegmentedControl = {
+        let segmentedControl = UIKit.UISegmentedControl(items: [Currency.krw.rawValue, Currency.usd.rawValue])
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
+    
+    private let descriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = .preferredFont(forTextStyle: .caption1)
+        textView.adjustsFontForContentSizeCategory = true
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
+    private let priceStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let infoStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let entireStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    func arrangeSubView() {
         self.backgroundColor = .systemBackground
-        self.addSubview(self.collectionView)
+        
+        priceStackView.addArrangedSubview(priceTextfield)
+        priceStackView.addArrangedSubview(segmentedControl)
+        
+        infoStackView.addArrangedSubview(productNameTextfield)
+        infoStackView.addArrangedSubview(priceStackView)
+        infoStackView.addArrangedSubview(bargainPriceTextfield)
+        infoStackView.addArrangedSubview(stockTextfield)
+        
+        entireStackView.addArrangedSubview(collectionView)
+        entireStackView.addArrangedSubview(infoStackView)
+        entireStackView.addArrangedSubview(descriptionTextView)
+        
+        self.addSubview(entireStackView)
         
         NSLayoutConstraint.activate([
-            self.collectionView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
-            self.collectionView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor),
-            self.collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 120),
-            self.collectionView.heightAnchor.constraint(equalToConstant: 200),
+            entireStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            entireStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            entireStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
+            entireStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            
+            collectionView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.2)
+//            segmentedControl.widthAnchor.constraint(equalTo: priceTextfield.widthAnchor, constant: 0.3),
+//            descriptionTextView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, constant: 0.6)
         ])
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        aa()
+        arrangeSubView()
     }
     
     required init?(coder: NSCoder) {
