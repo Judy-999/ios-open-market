@@ -209,9 +209,9 @@ final class MarketCollectionViewController: UICollectionViewController {
                                                 heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
         
-        let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .fractionalHeight(0.08))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupsize,
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitem: item,
                                                        count: 1)
         let section = NSCollectionLayoutSection(group: group)
@@ -225,10 +225,10 @@ final class MarketCollectionViewController: UICollectionViewController {
         let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-        let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .fractionalHeight(0.35))
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupsize,
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitem: item,
                                                        count: 2)
         let section = NSCollectionLayoutSection(group: group)
