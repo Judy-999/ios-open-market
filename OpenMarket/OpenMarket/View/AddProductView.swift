@@ -72,9 +72,10 @@ final class AddProductView: UIView {
         return segmentedControl
     }()
     
-    private let descriptionTextView: UITextView = {
+    let descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.font = .preferredFont(forTextStyle: .caption1)
+        textView.keyboardType = .default
         textView.adjustsFontForContentSizeCategory = true
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
@@ -98,7 +99,7 @@ final class AddProductView: UIView {
         return stackView
     }()
     
-    private let entireStackView: UIStackView = {
+    let entireStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 2
@@ -120,19 +121,30 @@ final class AddProductView: UIView {
         
         entireStackView.addArrangedSubview(collectionView)
         entireStackView.addArrangedSubview(infoStackView)
-        entireStackView.addArrangedSubview(descriptionTextView)
+//        entireStackView.addArrangedSubview(descriptionTextView)
         
         self.addSubview(entireStackView)
+        self.addSubview(descriptionTextView)
         
         NSLayoutConstraint.activate([
             entireStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             entireStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             entireStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
-            entireStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            entireStackView.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.45),
             
-            collectionView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.2),
-            segmentedControl.widthAnchor.constraint(equalTo: priceTextfield.widthAnchor, multiplier: 0.4),
-            descriptionTextView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.55)
+//            entireStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            
+            collectionView.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2),
+            segmentedControl.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor, multiplier: 0.4),
+//            infoStackView.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2),
+            
+            descriptionTextView.topAnchor.constraint(equalTo: entireStackView.bottomAnchor, constant: 16),
+            descriptionTextView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            descriptionTextView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            descriptionTextView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            
+//            descriptionTextView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.55)
+            
         ])
     }
     

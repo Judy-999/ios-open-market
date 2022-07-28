@@ -12,6 +12,8 @@ class ProductViewController: UIViewController {
     private lazy var dataSource = [UIImage(systemName: "plus")]
     let imagePicker = UIImagePickerController()
     
+    lazy var textViewConstraint = productView.descriptionTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300)
+    
     override func loadView() {
         super.loadView()
         view = productView
@@ -28,7 +30,7 @@ class ProductViewController: UIViewController {
         
         productView.collectionView.dataSource = self
         productView.collectionView.delegate = self
-        
+        productView.descriptionTextView.delegate = self
        
         configureImagePicker()
     }
@@ -78,6 +80,34 @@ extension ProductViewController: UICollectionViewDelegate {
     }
 }
 
+extension ProductViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+//        productView.entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300).isActive = true
+        
+        textViewConstraint.isActive = true
+        
+//         view.frame.size.height -= 300
+//        view.frame.origin.y -= 300
+        
+//        productView.descriptionTextView.setContentOffset(CGPoint(x: 0, y:  productView.descriptionTextView.contentSize.height - productView.descriptionTextView.bounds.height + 300), animated: false)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+//        productView.descriptionTextView.setContentOffset(CGPoint(x: 0, y:  productView.descriptionTextView.contentSize.height - productView.descriptionTextView.bounds.height + 300), animated: false)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+//        productView.entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
+
+        textViewConstraint.isActive = false
+        
+        
+//        view.frame.size.height += 300
+//        view.frame.origin.y += 300
+        
+//        productView.descriptionTextView.setContentOffset(CGPoint(x: 0, y:  productView.descriptionTextView.contentSize.height - productView.descriptionTextView.bounds.height), animated: false)
+    }
+}
 
 extension ProductViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
