@@ -65,7 +65,7 @@ final class AddProductView: UIView {
         return textField
     }()
 
-    private let segmentedControl: UISegmentedControl = {
+    let segmentedControl: UISegmentedControl = {
         let segmentedControl = UIKit.UISegmentedControl(items: [Currency.krw.rawValue, Currency.usd.rawValue])
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
@@ -146,6 +146,38 @@ final class AddProductView: UIView {
 //            descriptionTextView.heightAnchor.constraint(equalTo: entireStackView.heightAnchor, multiplier: 0.55)
             
         ])
+    }
+    
+    func receiveParam() -> Param? {
+        guard let name = productNameTextfield.text,
+              let price = priceTextfield.text,
+              var bargainPrice = bargainPriceTextfield.text,
+              var stock = stockTextfield.text,
+              let descriptionText = descriptionTextView.text else { return nil }
+        
+        
+        var currency = ""
+        var bb = 0, pp = 0, ss = 0
+        
+        guard let p = Int(price) else { return nil }
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            currency = Currency.krw.rawValue
+        } else {
+            currency = Currency.usd.rawValue
+        }
+        
+//        if bargainPrice == "" {
+//            bb =
+//        }
+//
+//        if stock == "" {
+//            stock = "0"
+//        }
+        
+        let param = Param(productName: name, price: pp, bargainPrice: bb, currency: currency, stock: ss, description: descriptionText)
+        
+        return param
     }
     
     override init(frame: CGRect) {

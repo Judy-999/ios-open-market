@@ -32,6 +32,7 @@ final class URLSessionManager {
     private func dataTask(request: URLRequest, completionHandler: @escaping (Result<Data, DataTaskError>) -> Void) {
         session.dataTask(with: request) { data, urlResponse, error in
             guard let response = urlResponse as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                print(urlResponse)
                 return completionHandler(.failure(.incorrectResponse))
             }
             guard let data = data else {
@@ -50,7 +51,7 @@ final class URLSessionManager {
         dataTask(request: request, completionHandler: completionHandler)
     }
     
-    private func makeBody(parameters: [[String : String]], boundary: String) -> Data {
+    private func makeBody(parameters: [[String : Any]], boundary: String) -> Data {
         var body = Data()
         
         for param in parameters {
@@ -60,15 +61,18 @@ final class URLSessionManager {
             
             let paramType = param.bringValue(key: "type")
             
-            if paramType == "text" {
+            if paramType as! String == "text"{
                 let paramValue = param.bringValue(key: "value")
                 body.append(contentsOf: "\r\n\r\n\(paramValue)\r\n".convertData)
                 
             } else {
                 let paramSrc = param.bringValue(key: "src")
+                let paramImage = param.bringImageValue(key: "image")
                 
-                guard let imageData = UIImage(named: "제다이"),
-                      let fileData = imageData.jpegData(compressionQuality: 0.5) else { return Data() }
+                guard let fileData = paramImage.jpegData(compressionQuality: 0.5) else {
+                    return Data()
+                    
+                }
                 
                 body.append(contentsOf: "; filename=\"\(paramSrc)\"\r\n".convertData)
                 body.append(contentsOf: "Content-Type: image/\(paramType)\r\n\r\n".convertData)
@@ -82,27 +86,28 @@ final class URLSessionManager {
         return body
     }
     
-    func postData(completionHandler: @escaping (Result<Data, DataTaskError>) -> Void) {
-        let parameters: [[String : String]] = [
-            [
-                "key": "params",
-                "value": """
-                        {
-                            "name": "제다이",
-                            "price": 20000,
-                            "stock": 2,
-                            "currency": "USD",
-                            "secret": "0hvvXjSeAS",
-                            "descriptions": "제다이 마스터입니다. (주디 & 재재)"
-                        }
-                        """,
-                "type": "text"
-            ],
-            [
-                "key": "images",
-                "src": "file:///Users/kimjuyoung/Downloads/%E1%84%8C%E1%85%A6%E1%84%83%E1%85%A1%E1%84%8B%E1%85%B5.png",
-                "type": "png"
-            ]]
+    func postData(dataElement: [[String : Any]], completionHandler: @escaping (Result<Data, DataTaskError>) -> Void) {
+//        let parameters: [[String : Any]] = [
+//            [
+//                "key": "params",
+//                "value": """
+//                        {
+//                            "name": "이름바꾼 바보전구",
+//                            "price": 20000,
+//                            "stock": 10,
+//                            "currency": "USD",
+//                            "secret": "0hvvXjSeAS",
+//                            "descriptions": "전구 바보"
+//                        }
+//                        """,
+//                "type": "text"
+//            ],
+//            [
+//                "key": "images",
+//                "src": "바보전구.png",
+//                "image": UIImage(named: "바보전구")!,
+//                "type": "png"
+//            ]]
         
         let boundary = "Boundary-\(UUID().uuidString)"
         guard let url = URL(string: "https://market-training.yagom-academy.kr/api/products") else { return }
@@ -111,7 +116,7 @@ final class URLSessionManager {
         request.addValue("f27bc126-0335-11ed-9676-1776ba240ec2", forHTTPHeaderField: "identifier")
         request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        request.httpBody =  makeBody(parameters: parameters, boundary: boundary)
+        request.httpBody =  makeBody(parameters: dataElement, boundary: boundary)
         
         dataTask(request: request, completionHandler: completionHandler)
     }
@@ -167,12 +172,20 @@ extension String {
     }
 }
 
-extension Dictionary where Key == String, Value == String {
-    fileprivate func bringValue(key: String) -> String {
+extension Dictionary where Key == String, Value == Any {
+    fileprivate func bringValue(key: String) -> Any {
         guard let value = self[key] else {
             return ""
         }
         
         return value
+    }
+    
+    fileprivate func bringImageValue(key: String) -> UIImage {
+        guard let value = self[key] else {
+            return UIImage()
+        }
+        
+        return value as? UIImage ?? UIImage()
     }
 }
