@@ -13,6 +13,7 @@ class ProductViewController: UIViewController {
     let imagePicker = UIImagePickerController()
     
     lazy var textViewConstraint = productView.descriptionTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300)
+    lazy var ttt = productView.entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300)
     
     override func loadView() {
         super.loadView()
@@ -84,28 +85,16 @@ extension ProductViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
 //        productView.entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -300).isActive = true
         
-        textViewConstraint.isActive = true
-        
-//         view.frame.size.height -= 300
-//        view.frame.origin.y -= 300
-        
-//        productView.descriptionTextView.setContentOffset(CGPoint(x: 0, y:  productView.descriptionTextView.contentSize.height - productView.descriptionTextView.bounds.height + 300), animated: false)
+        ttt.isActive = true
     }
     
     func textViewDidChange(_ textView: UITextView) {
-//        productView.descriptionTextView.setContentOffset(CGPoint(x: 0, y:  productView.descriptionTextView.contentSize.height - productView.descriptionTextView.bounds.height + 300), animated: false)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
 //        productView.entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8).isActive = true
 
-        textViewConstraint.isActive = false
-        
-        
-//        view.frame.size.height += 300
-//        view.frame.origin.y += 300
-        
-//        productView.descriptionTextView.setContentOffset(CGPoint(x: 0, y:  productView.descriptionTextView.contentSize.height - productView.descriptionTextView.bounds.height), animated: false)
+        ttt.isActive = false
     }
 }
 
