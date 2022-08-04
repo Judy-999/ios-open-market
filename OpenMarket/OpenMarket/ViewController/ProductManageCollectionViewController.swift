@@ -7,20 +7,24 @@
 
 import UIKit
 
-class AddProductViewController: UIViewController {
+class ProductManageCollectionViewController: UICollectionViewController {
+    // MARK: Inner types
+    enum Section: Int ,Hashable {
+        case ProductImage
+        case ProductInfo
+        case ProductDescription
+    }
+    
+    // MARK: Typealias
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Param>
+    typealias SnapShot = NSDiffableDataSourceSnapshot<Section, Param>
+
     // MARK: Properties
-    private let productView = AddProductView()
     private var dataSource: [UIImage] = []
     private var imagePicker: UIImagePickerController?
     private var imageParams: [ImageParam] = []
-    private lazy var viewConstraint = productView.entireStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -260)
     private var viewModeTitle = "상품등록"
     private var productNumber: Int?
-    
-    override func loadView() {
-        super.loadView()
-        view = productView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +32,21 @@ class AddProductViewController: UIViewController {
         configureDelegate()
     }
     
-    func changeToEditMode(data: DetailProduct, images: [String]) {
-        productView.configure(data: data)
-        productNumber = data.id
-        images.forEach {
-            guard let cachedImage = ImageCacheManager.shared.object(forKey: NSString(string: $0)) else { return }
-            dataSource.append(cachedImage)
-        }
-        productView.collectionView.reloadData()
-        viewModeTitle = "상품수정"
+//    func changeToEditMode(data: DetailProduct, images: [String]) {
+//        productView.configure(data: data)
+//        productNumber = data.id
+//        images.forEach {
+//            guard let cachedImage = ImageCacheManager.shared.object(forKey: NSString(string: $0)) else { return }
+//            dataSource.append(cachedImage)
+//        }
+//        productView.collectionView.reloadData()
+//        viewModeTitle = "상품수정"
+//    }
+    
+    func changeToEditMode() {
+        
+        
+        
     }
     
     //MARK: configure
@@ -57,9 +67,7 @@ class AddProductViewController: UIViewController {
     }
     
     private func configureDelegate() {
-        productView.collectionView.dataSource = self
-        productView.collectionView.delegate = self
-        productView.descriptionTextView.delegate = self
+//        productView.descriptionTextView.delegate = self
     }
     
     private func configureImagePicker() {
@@ -75,10 +83,10 @@ class AddProductViewController: UIViewController {
     }
     
     @objc private func updateButtonDidTapped() {
-        let sessionManager = URLSessionManager(session: URLSession.shared)
-        let paramManager = ParamManager()
-        guard let param = productView.createParam() else { return }
-        
+//        let sessionManager = URLSessionManager(session: URLSession.shared)
+//        let paramManager = ParamManager()
+//        guard let param = productView.createParam() else { return }
+
         guard param.productName != "", param.price != "", param.description != "" else {
             showAlert(title: "상품 등록 불가", message: "필수 항목을 입력해주십시오.\n(이름, 가격, 설명)")
             return
@@ -93,6 +101,31 @@ class AddProductViewController: UIViewController {
             postParam(paramManager, param, sessionManager)
         } else {
             patchParam(paramManager, param, sessionManager)
+        }
+    }
+    
+    // MARK: DataSource
+    private func makeDataSource() -> DataSource {
+        let infoRegistration = UICollectionView.CellRegistration<DetailInfoCollectionViewCell, Param>.init { cell, indexPath, item in
+        }
+        
+        let imageRegistration = UICollectionView.CellRegistration<DetailImageCollectionViewCell, Param>.init { cell, indexPath, item in
+      }
+        
+        let descriptionRegistration = UICollectionView.CellRegistration<DetailInfoCollectionViewCell, Param>.init { cell, indexPpath, item in
+            
+        }
+        
+        return DataSource(collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell? in
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section") }
+            switch section {
+            case .ProductImage:
+                return collectionView.dequeueConfiguredReusableCell(using: imageRegistration, for: indexPath, item: item)
+            case .ProductInfo:
+                return collectionView.dequeueConfiguredReusableCell(using: infoRegistration, for: indexPath, item: item)
+            case .ProductDescription:
+                return collectionView.dequeueConfiguredReusableCell(using: descriptionRegistration, for: indexPath, item: item)
+            }
         }
     }
     
@@ -132,18 +165,18 @@ class AddProductViewController: UIViewController {
 }
 
 //MARK: CollectionView's DataSource & Delegate
-extension AddProductViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension ProductManageCollectionViewController {
+    override func collectionView( _ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.dataSource.count
     }
     
-    func collectionView( _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddProductCollectionViewCell.id, for: indexPath) as? AddProductCollectionViewCell ?? AddProductCollectionViewCell()
-        cell.configureCell(image: dataSource[indexPath.item])
-        return cell
-    }
+//    override func collectionView( _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddProductCollectionViewCell.id, for: indexPath) as? AddProductCollectionViewCell ?? AddProductCollectionViewCell()
+//        cell.configureCell(image: dataSource[indexPath.item])
+//        return cell
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == dataSource.count - 1 {
             guard let imagePickerCheck = imagePicker else { return }
             self.present(imagePickerCheck, animated: true)
@@ -160,7 +193,7 @@ extension AddProductViewController: UICollectionViewDataSource, UICollectionView
 }
 
 //MARK: imagePickerController
-extension AddProductViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ProductManageCollectionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var selectedImage = UIImage()
         
@@ -183,7 +216,7 @@ extension AddProductViewController: UIImagePickerControllerDelegate, UINavigatio
         
         picker.dismiss(animated: true, completion: nil)
         
-        productView.collectionView.reloadData()
+        collectionView.reloadData()
     }
     
     private func compressImage(_ image: UIImage) -> Data {
@@ -199,16 +232,44 @@ extension AddProductViewController: UIImagePickerControllerDelegate, UINavigatio
        
         return imageData
     }
-}
-
-//MARK: UITextView
-extension AddProductViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        viewConstraint.isActive = true
-    }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        viewConstraint.isActive = false
+    // MARK: Layout
+    private func createLayout() -> UICollectionViewLayout {
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let sectionKind = Section(rawValue: sectionIndex) else { return nil }
+            let section: NSCollectionLayoutSection
+            
+            switch sectionKind {
+            case .ProductImage:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.45))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                
+                section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .groupPagingCentered
+                
+            case .ProductInfo:
+                let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.55))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupsize, subitem: item, count: 1)
+                
+                item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+                section = NSCollectionLayoutSection(group: group)
+                
+            case .ProductDescription:
+                let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+                let groupsize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.55))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupsize, subitem: item, count: 1)
+                
+                item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+                section = NSCollectionLayoutSection(group: group)
+            }
+            return section
+        }
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
     }
 }
 

@@ -12,7 +12,7 @@ enum VendorInfo {
     static let identifier = "f27bc126-0335-11ed-9676-1776ba240ec2"
 }
 
-struct Param {
+struct Param: Hashable {
     let productName: String
     let price: String
     let discountedPrice: String

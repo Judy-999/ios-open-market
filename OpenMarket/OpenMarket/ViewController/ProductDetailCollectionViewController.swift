@@ -93,7 +93,7 @@ class ProductDetailCollectionViewController: UICollectionViewController {
     }
     
     private func convertToEditView() {
-        guard let productVC = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? AddProductViewController else { return }
+        guard let productVC = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductManageCollectionViewController else { return }
         guard let detailProduct = detailProduct else { return }
         productVC.changeToEditMode(data: detailProduct, images: images)
         navigationController?.pushViewController(productVC, animated: true)

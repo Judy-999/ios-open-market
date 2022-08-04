@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Usl-cD-3yu">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -29,7 +28,7 @@
             <objects>
                 <collectionViewController id="mKa-vZ-Rqq" customClass="MarketCollectionViewController" customModule="OpenMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="57R-Mx-Xo5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EuX-wU-TCJ">
@@ -50,12 +49,12 @@
             </objects>
             <point key="canvasLocation" x="1288" y="66"/>
         </scene>
-        <!--Add Product View Controller-->
+        <!--Product Manage Collection View Controller-->
         <scene sceneID="OAm-57-nlc">
             <objects>
-                <viewController storyboardIdentifier="ProductViewController" id="ZJu-Wh-p5n" customClass="AddProductViewController" customModule="OpenMarket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductViewController" id="ZJu-Wh-p5n" customClass="ProductManageCollectionViewController" customModule="OpenMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N2e-ti-HnV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="g9l-ES-15N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,7 +69,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="ProductDetailCollectionViewController" id="AVr-cs-D1H" customClass="ProductDetailCollectionViewController" customModule="OpenMarket" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SQ0-5k-HmS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EBC-kt-ax9">
