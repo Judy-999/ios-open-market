@@ -485,6 +485,7 @@ extension AddProductViewController: UITextViewDelegate {
 <br>
 
 [**문제 예시 - 제다이가 된 주디와 웡빙 (원래는 연예인 사진)**]
+
 <img src="https://i.imgur.com/TnUm6tg.jpg" width="250" height="500" />
 
 <br>이미지를 요청한 **Cell**과 현재 **Cell**이 일치하지 않았을 때의 문제이므로 **Cell**에 이미지를 할당하기 전에 이미지를 요청했던 **Cell** 비교하여 **Cell**이 일치한 경우에만 이미지를 넣도록 하여 해결했습니다.
