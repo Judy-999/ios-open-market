@@ -604,7 +604,7 @@ private func compressImage(_ image: UIImage) -> Data {
 <br>
 
 #### 1) jpg로만 구분된 이유
-사진 용량을 줄이기 위해 `pegData(compressionQuality: )` 메서드를 사용했습니다. `compressionQuality`을 지정해주면 해당 배율로 압축해서 사진을 `Data` 타입으로로 변환할 수 있습니다. 하지만 해당 메서드를 사용하면 어떤 사진도 **jpeg**로 변환되기 때문에 **jpg** 외에는 다른 타입이 나올 수 없었습니다 😅 
+사진 용량을 줄이기 위해 `jpegData(compressionQuality: )` 메서드를 사용했습니다. `compressionQuality`을 지정해주면 해당 배율로 압축해서 사진을 `Data` 타입으로로 변환할 수 있습니다. 하지만 해당 메서드를 사용하면 어떤 사진도 **jpeg**로 변환되기 때문에 **jpg** 외에는 다른 타입이 나올 수 없었습니다 😅 
 <br>
 
 #### 2) 특정 사진들이 Post되지 않은 이유
