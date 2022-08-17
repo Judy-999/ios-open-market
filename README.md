@@ -129,7 +129,7 @@
 ---
 
 ## 🧑‍💻 코드 설명
-**URL**
+**UML**
 
 ![](https://i.imgur.com/k4iHVWz.jpg)
 
